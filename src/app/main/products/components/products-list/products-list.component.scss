@@ -1,0 +1,155 @@
+.mat-success {
+    background-color: green;
+    color: #fff;
+}
+
+.mat-error {
+    background-color: red;
+    color: #fff;
+}
+
+.content {
+    padding: 35px;
+
+    .page-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .page-header-actions {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            justify-content: space-between;
+            margin-bottom: 15px;
+
+            .form-section {
+                width: 50%;
+                display: flex;
+                flex-direction: row;
+
+                .form-group {
+                    margin-right: 5px;
+                }
+            }
+
+            .actions {
+                display: flex;
+                flex-direction: row;
+                align-items: start;
+
+                >button {
+                    margin-left: 5px;
+                    min-height: 56px;
+                }
+            }
+        }
+    }
+
+    .table-header-actions {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: end;
+
+        .actions {
+            display: flex;
+            width: 100%;
+            flex-direction: row;
+            align-items: end;
+            justify-content: end;
+
+            >button {
+                margin-right: 5px;
+                margin-left: 5px;
+                height: 40px;
+            }
+
+            .mat-form-field {
+                margin-right: 5px;
+                height: 40px;
+            }
+        }
+    }
+
+    .filter-column-header {
+        display: flex;
+        flex-direction: column;
+
+        .table-filter {
+            display: flex;
+            flex-direction: row;
+        }
+    }
+}
+
+.action-header-table {
+    margin-top: -20px;
+}
+
+.m-5 {
+    margin: 1.5rem;
+}
+
+::ng-deep {
+    .material {
+        .mat-mdc-text-field-wrapper {
+            height: 45px !important;
+        }
+
+        .mdc-text-field--no-label:not(.mdc-text-field--outlined):not(.mdc-text-field--textarea) .mat-mdc-form-field-infix {
+            padding-top: 11px !important;
+            padding-bottom: 11px !important;
+        }
+
+        .mat-mdc-icon-button.mat-mdc-button-base {
+            padding: 0px;
+            padding-right: 2px;
+            padding-top: 12px;
+            width: 0px;
+            height: 0px;
+        }
+
+        .sort-btn {
+            display: none !important;
+        }
+    }
+
+    .table-header-actions {
+        .search-input {
+            .mat-mdc-text-field-wrapper {
+                height: 45px !important;
+            }
+
+            .mdc-text-field--no-label:not(.mdc-text-field--outlined):not(.mdc-text-field--textarea) .mat-mdc-form-field-infix {
+                padding-top: 11px !important;
+                padding-bottom: 11px !important;
+            }
+
+            .mat-mdc-icon-button.mat-mdc-button-base {
+                padding: 0px;
+                padding-right: 2px;
+                padding-top: 12px;
+                width: 0px;
+                height: 0px;
+            }
+
+            .mat-mdc-form-field-subscript-wrapper,
+            .mat-mdc-form-field-bottom-align::before {
+                display: none !important;
+            }
+
+            .mat-mdc-form-field-icon-prefix>.mat-icon,
+            .mat-mdc-form-field-icon-suffix>.mat-icon {
+                padding: 0px;
+                padding-left: 8px;
+                height: 32px;
+            }
+        }
+
+        .save-button {
+            margin-left: 5px;
+            height: 45px !important;
+        }
+    }
+}

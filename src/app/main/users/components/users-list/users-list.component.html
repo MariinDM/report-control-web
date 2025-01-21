@@ -1,0 +1,125 @@
+<div class="content">
+    <div class="page-header mt-5">
+        <h1 class="text-2xl bold mt-5">Lista de Usuarios</h1>
+
+        <div class="page-header-actions mb-5">
+            <div class="form-section">
+                <div class="form-group">
+
+                </div>
+            </div>
+
+            <div class="actions">
+                <button (click)="exportXLSX()">
+                    <mat-icon>content_copy</mat-icon>
+                    <span>Exportar XLSX</span>
+                </button>
+
+                <button class="save-button" mat-flat-button color="primary"
+                    (click)="openDialog(true, 'Agregar Usuario')">
+                    Crear Usuario
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-header-actions mb-5">
+        <div class="actions">
+
+        </div>
+    </div>
+
+    <ngx-datatable #mydatatable class="material" [headerHeight]="60" [limit]="1000" [columnMode]="ColumnMode.force"
+        [footerHeight]="50" rowHeight="auto" [rows]="rows" [messages]="{
+            totalMessage: 'Total',
+            emptyMessage: 'Sin registros',
+            selectedMessage: 'Seleccionado'
+          }" [selected]="selected" [selectionType]="SelectionType.checkbox" [selectAllRowsOnPage]="false"
+        (select)="onSelect($event)">
+
+        <ngx-datatable-column [width]="30" [sortable]="false" [canAutoResize]="false" [draggable]="false"
+            [resizeable]="false" [headerCheckboxable]="true" [checkboxable]="true">
+        </ngx-datatable-column>
+
+        <ngx-datatable-column prop="id" name="ID" [sortable]="true">
+            <ng-template let-column="column" let-sort="sortFn" let-sortDir="sortDir" ngx-datatable-header-template>
+                <div class="filter-column-header">
+                    <a (click)="sort()">{{ column.name }}</a>
+                </div>
+            </ng-template>
+            <ng-template ngx-datatable-cell-template let-value="value">
+                {{ value }}
+            </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column prop="name" name="NOMBRE" [sortable]="true">
+            <ng-template let-column="column" let-sort="sortFn" let-sortDir="sortDir" ngx-datatable-header-template>
+                <div class="filter-column-header">
+                    <a (click)="sort()">{{ column.name }}</a>
+                </div>
+            </ng-template>
+            <ng-template ngx-datatable-cell-template let-value="value">
+                {{ value }}
+            </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column prop="email" name="CORREO" [sortable]="true">
+            <ng-template let-column="column" let-sort="sortFn" let-sortDir="sortDir" ngx-datatable-header-template>
+                <div class="filter-column-header">
+                    <a (click)="sort()">{{ column.name }}</a>
+                </div>
+            </ng-template>
+            <ng-template ngx-datatable-cell-template let-value="value">
+                {{ value }}
+            </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column prop="role.name" name="ROL" [sortable]="true">
+            <ng-template let-column="column" let-sort="sortFn" let-sortDir="sortDir" ngx-datatable-header-template>
+                <div class="filter-column-header">
+                    <a (click)="sort()">{{ column.name }}</a>
+                </div>
+            </ng-template>
+            <ng-template ngx-datatable-cell-template let-value="value">
+                {{ value }}
+            </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column prop="active" name="ESTADO" [sortable]="true">
+            <ng-template let-column="column" let-sort="sortFn" let-sortDir="sortDir" ngx-datatable-header-template>
+                <div class="filter-column-header">
+                    <a (click)="sort()">{{ column.name }}</a>
+                </div>
+            </ng-template>
+            <ng-template ngx-datatable-cell-template let-value="value">
+                {{ value ? 'Activo' : 'Inactivo' }}
+            </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="Opciones" [sortable]="false">
+            <ng-template #buttonsTemplate let-row="row" let-value="value" ngx-datatable-cell-template>
+                <div>
+                    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                        <mat-icon class="align-top">more_vert</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item (click)="openDialog(false,'Editar Usuario', row)">
+                            <span>Editar</span>
+                        </button>
+                        <button mat-menu-item (click)="changeStatus(row.id)">
+                            <span>Cambiar Estado</span>
+                        </button>
+                    </mat-menu>
+                </div>
+            </ng-template>
+        </ngx-datatable-column>
+
+    </ngx-datatable>
+
+    <ng-template #targetMarkerTemplate let-class="class">
+        <div [ngClass]="class">
+            <div class="icon datatable-icon-down"></div>
+            <div class="icon datatable-icon-up"></div>
+        </div>
+    </ng-template>
+</div>

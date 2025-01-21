@@ -1,0 +1,35 @@
+<h2 mat-dialog-title>{{title}}</h2>
+<form class="form" [formGroup]="form" (ngSubmit)="sendData()">
+    <mat-dialog-content>
+        <mat-form-field appearance="fill" class="w-full">
+            <mat-label>Nombre</mat-label>
+            <input matInput placeholder="Ingresa el nombre" formControlName="name" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="w-full">
+            <mat-label>Correo</mat-label>
+            <input matInput placeholder="Ingresa la descripción" formControlName="email" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="w-full">
+            <mat-label>Contraseña</mat-label>
+            <input matInput type="password" placeholder="Ingresa la descripción" formControlName="password" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="w-full">
+            <mat-label>Rol</mat-label>
+            <mat-select formControlName="role_id">
+                @for (item of roles; track item) {
+                <mat-option [value]="item.id">{{item.name}}</mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <div class="p-2">
+            <button mat-flat-button mat-dialog-close>Cerrar</button>
+            <button mat-flat-button color="primary" [disabled]="form.invalid">Enviar</button>
+        </div>
+    </mat-dialog-actions>
+</form>

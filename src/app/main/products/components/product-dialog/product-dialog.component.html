@@ -1,0 +1,44 @@
+<h2 mat-dialog-title>{{title}}</h2>
+<form class="form" [formGroup]="form" (ngSubmit)="sendData()">
+    <mat-dialog-content>
+        <mat-form-field appearance="fill" class="w-full">
+            <mat-label>Nombre</mat-label>
+            <input matInput placeholder="Ingresa el nombre" formControlName="name" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="w-full">
+            <mat-label>Descripción</mat-label>
+            <input matInput placeholder="Ingresa la descripción" formControlName="description" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="w-full">
+            <mat-label>Precio</mat-label>
+            <input matInput type="number" placeholder="Ingresa un precio" formControlName="price" />
+        </mat-form-field>
+        <div class="w-full justify-between flex">
+            <div class="flex items-center">
+                <input type="file" class="hidden" (change)="onFileSelected($event)" #fileInput>
+                <button type="button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                    (click)="fileInput.click()">
+                    Subir Imagen
+                </button>
+            </div>
+            <div class="flex items-end">
+                <span class="ml-2">
+                    <mat-icon [ngClass]="selectedFile ? 'text-green-500' : 'text-gray-500'">image</mat-icon>
+                </span>
+                @if (selectedFile || product?.image_url) {
+                <span class="ml-2">
+                    <mat-icon class="cursor-pointer" (click)="openImageDialog()">visibility</mat-icon>
+                </span>
+                }
+            </div>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <div class="p-2">
+            <button mat-flat-button mat-dialog-close>Cerrar</button>
+            <button mat-flat-button color="primary" [disabled]="form.invalid">Enviar</button>
+        </div>
+    </mat-dialog-actions>
+</form>
