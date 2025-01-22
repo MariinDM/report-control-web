@@ -11,6 +11,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ColumnMode, SelectionType } from '@swimlane/ngx-datatable';
 import { UserService } from '../../services/user.service';
 import { UsersFormComponent } from '../users-form/users-form.component';
+import { UserModel } from '../../interfaces/user';
 
 @Component({
   selector: 'app-users-list',
@@ -33,7 +34,7 @@ export class UsersListComponent {
   SelectionType = SelectionType;
   selected: any[] = [];
 
-  rows: any[] = [];
+  rows: UserModel[] = [];
 
   ngOnInit(): void {
     this.getData();

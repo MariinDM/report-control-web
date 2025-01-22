@@ -14,7 +14,7 @@ export class RenderImageComponent {
   imageSrc: string | ArrayBuffer | null = null;
 
   constructor() {
-    if (this.data.product.image_url) {
+    if (this.data.product && this.data.product.image_url) {
       this.imageSrc = this.data.product.image_url;
     } else {
       this.loadImage(this.data.image);

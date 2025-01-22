@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
 import { ToastType } from '../../../../shared/enums/toastype';
 import { catchError, tap, throwError } from 'rxjs';
 import { RenderImageComponent } from '../../../../shared/components/render-image/render-image.component';
+import { ProductModel } from '../../interfaces/product';
 
 @Component({
   selector: 'app-product-dialog',
@@ -32,7 +33,7 @@ export class ProductDialogComponent {
   form!: FormGroup;
   action: boolean = true;
   title: string = '';
-  product: any;
+  product: ProductModel;
   selectedFile: File | null = null;
 
   constructor() {

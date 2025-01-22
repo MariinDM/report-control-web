@@ -11,6 +11,7 @@ import { MaterialModule } from '../../../../shared/modules/material.module';
 import { MatDialog } from '@angular/material/dialog';
 import { ProductDialogComponent } from '../product-dialog/product-dialog.component';
 import { FilesService } from '../../../../shared/services/files.service';
+import { ProductModel } from '../../interfaces/product';
 
 @Component({
   selector: 'app-products-list',
@@ -34,7 +35,7 @@ export class ProductsListComponent implements OnInit {
   SelectionType = SelectionType;
   selected: any[] = [];
 
-  rows: any[] = [];
+  rows: ProductModel[] = [];
 
   ngOnInit(): void {
     this.getData();

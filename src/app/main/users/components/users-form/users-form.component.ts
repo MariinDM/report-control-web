@@ -8,6 +8,7 @@ import { UserService } from '../../services/user.service';
 import { AlertMessageService } from '../../../../shared/services/alert-message.service';
 import { catchError, tap, throwError } from 'rxjs';
 import { ToastType } from '../../../../shared/enums/toastype';
+import { UserModel } from '../../interfaces/user';
 
 @Component({
   selector: 'app-users-form',
@@ -29,7 +30,7 @@ export class UsersFormComponent {
   form!: FormGroup;
   action: boolean = true;
   title: string = '';
-  user: any;
+  user: UserModel;
   selectedFile: File | null = null;
 
   roles = [
