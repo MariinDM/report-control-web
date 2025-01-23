@@ -12,6 +12,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ProductDialogComponent } from '../product-dialog/product-dialog.component';
 import { FilesService } from '../../../../shared/services/files.service';
 import { ProductModel } from '../../interfaces/product';
+import { LocalstorageService } from '../../../../shared/services/localstorage.service';
 
 @Component({
   selector: 'app-products-list',
@@ -28,6 +29,7 @@ export class ProductsListComponent implements OnInit {
 
   private productsService = inject(ProductService);
   private alertMessage = inject(AlertMessageService);
+  private localStorage = inject(LocalstorageService);
   private filesService = inject(FilesService);
   private _dialog = inject(MatDialog);
 
@@ -35,10 +37,15 @@ export class ProductsListComponent implements OnInit {
   SelectionType = SelectionType;
   selected: any[] = [];
 
+  role_id: number = 0;
+
   rows: ProductModel[] = [];
 
   ngOnInit(): void {
     this.getData();
+
+    const user = this.localStorage.getJsonItem('user') as { role_id: number };
+    this.role_id = user.role_id;
   }
 
   onSelect({ selected }: any) {

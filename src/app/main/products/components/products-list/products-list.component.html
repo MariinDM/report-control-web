@@ -116,9 +116,11 @@
                         <button mat-menu-item (click)="openDialog(false, row)">
                             <span>Editar</span>
                         </button>
+                        @if (role_id === 1) {
                         <button mat-menu-item (click)="changeStatus(row.id)">
                             <span>Cambiar Estado</span>
                         </button>
+                        }
                     </mat-menu>
                 </div>
             </ng-template>
