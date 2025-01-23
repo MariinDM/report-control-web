@@ -15,7 +15,7 @@ export class RenderImageComponent {
 
   constructor() {
     if (this.data.product && this.data.product.image_url) {
-      this.imageSrc = this.data.product.image_url;
+      this.imageSrc = this.data.product.imageBase64;
     } else {
       this.loadImage(this.data.image);
     }
